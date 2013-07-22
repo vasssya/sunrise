@@ -2,8 +2,6 @@
 
 Web-based exchange application to organize digital currency trading. It's code open and avalible by GPLv2.
 
-v. 0.0.1 - proof of concept
-
 == Requirements
 
 * Ruby 2.0 (others not tested)
@@ -21,13 +19,16 @@ v. 0.0.1 - proof of concept
 
 == How it works
 
-User can create bid, for example "I want to buy 10 BTC for 1000 USD".<br>
-Another user can create bid "I want to buy 1000 USD for 10 BTC".<br>
-This bids will matched and closed. Money will transfer through user accounts.<br>
+User can create bid, for example "I want to buy 10 BTC for 1000 USD".
+
+Another user can create bid "I want to buy 1000 USD for 10 BTC".
+
+This bids will matched and closed. Money will transfer through user accounts.
 
 Another example:
 
-User1: I want to buy 10 BTC for 2000 USD<br>
+User1: I want to buy 10 BTC for 2000 USD
+
 User2: I want to buy 1000 for 10 BTC
 
 First match second. Both will closed. User1 give 2000 USD and get 10 BTC. User2 get 1000 USD and give 10 BTC. In this version 1000 USD disapears. Maybe in future it becomes a fiture - spread that exchange earns.
