@@ -1,0 +1,20 @@
+- model_class = Account
+div class="page-header"
+  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+table class="table table-striped"
+  thead
+    tr
+      th= model_class.human_attribute_name(:id)
+      th= model_class.human_attribute_name(:currency)
+      th= model_class.human_attribute_name(:amount)
+      th
+  tbody
+    - @accounts.each do |account|
+      tr
+        td= account.id
+        td= account.currency
+        td= account.amount
+        td
+          = link_to 'Add funds', '#', :class => 'btn btn-mini'
+          '
+          = link_to 'Withdraw', '#', :class => 'btn btn-mini btn-danger'

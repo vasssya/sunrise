@@ -1,0 +1,34 @@
+- model_class = Bid
+div class="page-header"
+  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+table class="table table-striped"
+  thead
+    tr
+      th= model_class.human_attribute_name(:id)
+      th= model_class.human_attribute_name(:buy_currency)
+      th= model_class.human_attribute_name(:amount)
+      th= model_class.human_attribute_name(:sell_currency)
+      th= model_class.human_attribute_name(:max_price)
+      th= model_class.human_attribute_name(:rate)
+      th= model_class.human_attribute_name(:reverse_rate)
+      th= model_class.human_attribute_name(:state)
+      th= model_class.human_attribute_name(:user_id)
+      th= model_class.human_attribute_name(:created_at)
+  tbody
+    - @bids.each do |bid|
+      tr
+        td= bid.id
+        td= bid.buy_currency
+        td= bid.amount
+        td= bid.sell_currency
+        td= bid.max_price
+        td
+          a href="#" data-toggle="tooltip" title="Хочу купить #{bid.buy_currency} за #{bid.sell_currency} по #{bid.rate} #{bid.sell_currency} за 1 #{bid.buy_currency}"
+            = bid.rate
+        td= bid.reverse_rate
+        td= bid.state
+        td= bid.user_id
+        td= bid.created_at.to_i
+
+= link_to t('.new', :default => t("helpers.links.new")), new_bid_path, :class => 'btn btn-primary'
+

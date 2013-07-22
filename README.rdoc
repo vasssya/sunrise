@@ -1,0 +1,52 @@
+== Sunrise Engine
+
+Web-based exchange application to organize digital currency trading. It's code open and avalible by GPLv2.
+
+v. 0.0.1 - proof of concept
+
+== Requirements
+
+Ruby 2.0 (others not tested)
+PostgreSQL
+
+== Installation
+
+git clone
+cd sunrise
+bundle
+rake db:create db:migrate db:seed
+bin/match # Rub loop matcher for bids
+rails s
+
+== How it works
+
+User can create bid, for example "I want to buy 10 BTC for 1000 USD".
+Another user can create bid "I want to buy 1000 USD for 10 BTC".
+This bids will matched and closed. Money will transfer through user accounts.
+
+Another example:
+
+User1: I want to buy 10 BTC for 2000 USD
+User2: I want to buy 1000 for 10 BTC
+
+First match second. Both will closed. User1 give 2000 USD and get 10 BTC. User2 get 1000 USD and give 10 BTC. In this version 1000 USD disapears. Maybe in future it becomes a fiture - spread that exchange earns.
+
+Matcher logic - lib/matcher.rb
+
+== Plans
+
+== Demo
+
+== License
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 2 of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.

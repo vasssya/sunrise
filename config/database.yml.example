@@ -1,0 +1,20 @@
+connection: &connection
+  adapter: postgresql
+  postgis_extension: true
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password:
+
+development:
+  <<: *connection
+  database: sunrise_dev
+
+test:
+  <<: *connection
+  database: sunrise_test
+
+production:
+  <<: *connection
+  database: sunrise
+

@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require_relative '../config/environment'
+
+while true do
+	result = Matcher.run
+	if result[:new_found] == 0
+		puts 'SLEEP'
+		sleep 1
+	end
+end

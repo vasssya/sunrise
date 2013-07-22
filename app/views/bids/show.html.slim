@@ -1,0 +1,39 @@
+- model_class = Bid
+div class="page-header"
+  h1=t '.title', :default => model_class.model_name.human.titleize
+
+p
+  strong= model_class.human_attribute_name(:what) + ':'
+  br
+  = @bid.what
+p
+  strong= model_class.human_attribute_name(:for) + ':'
+  br
+  = @bid.for
+p
+  strong= model_class.human_attribute_name(:count) + ':'
+  br
+  = @bid.count
+p
+  strong= model_class.human_attribute_name(:price) + ':'
+  br
+  = @bid.price
+p
+  strong= model_class.human_attribute_name(:rate) + ':'
+  br
+  = @bid.rate
+p
+  strong= model_class.human_attribute_name(:reverse_rate) + ':'
+  br
+  = @bid.reverse_rate
+p
+  strong= model_class.human_attribute_name(:user_id) + ':'
+  br
+  = @bid.user_id
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), bids_path, :class => 'btn'
+  '
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_bid_path(@bid), :class => 'btn'
+  '
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), bid_path(@bid), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
