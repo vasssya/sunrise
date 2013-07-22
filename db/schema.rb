@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130716144041) do
+ActiveRecord::Schema.define(version: 20130722154131) do
 
   create_table "accounts", force: true do |t|
     t.string   "currency"
@@ -39,6 +39,18 @@ ActiveRecord::Schema.define(version: 20130716144041) do
   end
 
   add_index "bids", ["user_id"], name: "index_bids_on_user_id", using: :btree
+
+  create_table "transactions", force: true do |t|
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.integer  "bids",       array: true
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "transactions", ["from_id"], name: "index_transactions_on_from_id", using: :btree
+  add_index "transactions", ["to_id"], name: "index_transactions_on_to_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
