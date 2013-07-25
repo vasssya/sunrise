@@ -55,4 +55,16 @@ describe "Matching" do
 		user2.btc.amount.should == 90
 	end
 
+	it 'creates transactions' do
+		add_user_money
+		b2 = user2.bids.create! buy_currency: 'usd', amount: 1000, sell_currency: 'btc', max_price: 10
+		b1 = user1.bids.create! buy_currency: 'btc', amount: 11, sell_currency: 'usd', max_price: 2200
+		Matcher.run
+		Transaction.count.should == 2
+		user2.usd.in_transactions.count.should == 1
+		user2.btc.out_transactions.count.should == 1
+		user1.btc.in_transactions.count.should == 1
+		user1.usd.out_transactions.count.should == 1
+	end
+
 end

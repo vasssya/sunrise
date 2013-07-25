@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :bids
   has_many :accounts
 
+
   after_create :create_user_accounts
 
   def create_user_accounts

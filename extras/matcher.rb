@@ -18,16 +18,46 @@ class Matcher
 							ActiveRecord::Base.transaction do
 							  bid.done!
 							  match_bid.done!
+
+							  Transaction.create! from: bid.account_sell,
+							  										to: match_bid.account_buy,
+							  										amount: match_bid.amount,
+							  										bids: [bid.id, match_bid.id]
+
+							  Transaction.create! from: match_bid.account_sell,
+							  										to: bid.account_buy,
+							  										amount: bid.amount,
+							  										bids: [bid.id, match_bid.id]
 							end
 						elsif bid.amount > match_bid.max_price and match_bid.amount <= bid.max_price
 							ActiveRecord::Base.transaction do
 								match_bid.done!
 								bid.partially_done! match_bid.amount, match_bid.max_price
+
+							  Transaction.create! from: bid.account_sell,
+							  										to: match_bid.account_buy,
+							  										amount: match_bid.amount,
+							  										bids: [bid.id, match_bid.id]
+
+							  Transaction.create! from: match_bid.account_sell,
+							  										to: bid.account_buy,
+							  										amount: match_bid.max_price,
+							  										bids: [bid.id, match_bid.id]
 							end
 						elsif match_bid.amount > bid.max_price and bid.amount <= match_bid.max_price
 							ActiveRecord::Base.transaction do
 								bid.done!
 								match_bid.partially_done! bid.amount, bid.max_price
+
+							  Transaction.create! from: bid.account_sell,
+							  										to: match_bid.account_buy,
+							  										amount: bid.max_price,
+							  										bids: [bid.id, match_bid.id]
+
+							  Transaction.create! from: match_bid.account_sell,
+							  										to: bid.account_buy,
+							  										amount: bid.amount,
+							  										bids: [bid.id, match_bid.id]
 							end
 						end
 						puts "MATCH SUCCSESS"

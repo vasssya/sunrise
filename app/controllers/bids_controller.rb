@@ -4,7 +4,7 @@ class BidsController < ApplicationController
   # GET /bids
   # GET /bids.json
   def index
-    @bids = Bid.order('created_at DESC')
+    @bids = Bid.order('created_at DESC').page params[:page]
   end
 
   # GET /bids/1

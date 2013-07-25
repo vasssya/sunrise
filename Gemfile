@@ -7,6 +7,7 @@ gem 'twitter-bootstrap-rails'
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'devise', '3.0.0.rc'
 gem 'colored', require: false
+gem 'kaminari'
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'

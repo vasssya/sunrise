@@ -1,0 +1,22 @@
+- model_class = Transaction
+div class="page-header"
+  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+table class="table table-striped"
+  thead
+    tr
+      th= model_class.human_attribute_name(:id)
+      th= model_class.human_attribute_name(:from_id)
+      th= model_class.human_attribute_name(:to_id)
+      th= model_class.human_attribute_name(:bids)
+      th= model_class.human_attribute_name(:amount)
+  tbody
+    - @transactions.each do |t|
+      tr
+        td= t.id
+        td= t.from_id
+        td= t.to_id
+        td= t.bids
+        td= t.amount
+= paginate @transactions
+
+

@@ -25,7 +25,7 @@ module Sunrise
       generate.helper false
       generate.assets false
       generate.view_specs false
-      generate.test_framework :rspec, view_specs: false, routing_specs: false
+      generate.test_framework :rspec, view_specs: false, routing_specs: false, controller_specs: false
     end
 
     config.currencies = %w(btc usd eur)

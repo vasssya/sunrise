@@ -33,7 +33,7 @@ User2: I want to buy 1000 for 10 BTC
 
 First match second. Both will closed. User1 give 2000 USD and get 10 BTC. User2 get 1000 USD and give 10 BTC. In this version 1000 USD disapears. Maybe in future it becomes a fiture - spread that exchange earns.
 
-Matcher logic - lib/matcher.rb
+Matcher logic - extras/matcher.rb
 
 == Plans
 

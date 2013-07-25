@@ -1,4 +1,5 @@
 Sunrise::Application.routes.draw do
+  get "transactions/index"
   resources :accounts, only: :index
   resources :bids, only: [:create, :index, :new]
   devise_for :users
